@@ -1,0 +1,12 @@
+a=12+2*cos(3.14);
+add = 10 + 11.5;
+sub = 100 - 0.1;
+div = 8/4;
+mul = 7*3;
+pow = 2 ^ 1;
+root = sqrt(25); 
+usx = unosobrex(2);
+l = ln(1);
+s = sen(3.141516);
+c = cos(1.0472);
+t = tan(0.785398);

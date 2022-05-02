@@ -1,0 +1,647 @@
+Terminales no usados en la gramática
+
+   TKN_COMA
+
+
+Gramática
+
+    0 $accept: loop $end
+
+    1 loop: loop calculadora
+    2     | calculadora
+
+    3 $@1: %empty
+
+    4 calculadora: TKN_ID $@1 TKN_ASIGN expresion TKN_PTOCOMA
+
+    5 expresion: TKN_NUM
+    6          | TKN_PAA expresion TKN_PAC
+    7          | expresion TKN_MAS expresion
+    8          | expresion TKN_MENOS expresion
+    9          | expresion TKN_MULT expresion
+   10          | expresion TKN_POW expresion
+   11          | expresion TKN_DIV expresion
+   12          | TKN_SEN TKN_PAA expresion TKN_PAC
+   13          | TKN_COS TKN_PAA expresion TKN_PAC
+   14          | TKN_TAN TKN_PAA expresion TKN_PAC
+   15          | TKN_LN TKN_PAA expresion TKN_PAC
+   16          | TKN_SQRT TKN_PAA expresion TKN_PAC
+   17          | TKN_UNOSOBREX TKN_PAA expresion TKN_PAC
+
+
+Terminales con las reglas donde aparecen
+
+$end (0) 0
+error (256)
+TKN_NUM (258) 5
+TKN_ASIGN (259) 4
+TKN_PTOCOMA (260) 4
+TKN_COMA (261)
+TKN_MULT (262) 9
+TKN_DIV (263) 11
+TKN_MAS (264) 7
+TKN_MENOS (265) 8
+TKN_PAA (266) 6 12 13 14 15 16 17
+TKN_PAC (267) 6 12 13 14 15 16 17
+TKN_SEN (268) 12
+TKN_COS (269) 13
+TKN_TAN (270) 14
+TKN_POW (271) 10
+TKN_SQRT (272) 16
+TKN_LN (273) 15
+TKN_UNOSOBREX (274) 17
+TKN_ID (275) 4
+
+
+No terminales con las reglas donde aparecen
+
+$accept (21)
+    en la izquierda: 0
+loop (22)
+    en la izquierda: 1 2, en la derecha: 0 1
+calculadora (23)
+    en la izquierda: 4, en la derecha: 1 2
+$@1 (24)
+    en la izquierda: 3, en la derecha: 4
+expresion (25)
+    en la izquierda: 5 6 7 8 9 10 11 12 13 14 15 16 17, en la derecha:
+    4 6 7 8 9 10 11 12 13 14 15 16 17
+
+
+Estado 0
+
+    0 $accept: . loop $end
+
+    TKN_ID  desplazar e ir al estado 1
+
+    loop         ir al estado 2
+    calculadora  ir al estado 3
+
+
+Estado 1
+
+    4 calculadora: TKN_ID . $@1 TKN_ASIGN expresion TKN_PTOCOMA
+
+    $default  reduce usando la regla 3 ($@1)
+
+    $@1  ir al estado 4
+
+
+Estado 2
+
+    0 $accept: loop . $end
+    1 loop: loop . calculadora
+
+    $end    desplazar e ir al estado 5
+    TKN_ID  desplazar e ir al estado 1
+
+    calculadora  ir al estado 6
+
+
+Estado 3
+
+    2 loop: calculadora .
+
+    $default  reduce usando la regla 2 (loop)
+
+
+Estado 4
+
+    4 calculadora: TKN_ID $@1 . TKN_ASIGN expresion TKN_PTOCOMA
+
+    TKN_ASIGN  desplazar e ir al estado 7
+
+
+Estado 5
+
+    0 $accept: loop $end .
+
+    $default  aceptar
+
+
+Estado 6
+
+    1 loop: loop calculadora .
+
+    $default  reduce usando la regla 1 (loop)
+
+
+Estado 7
+
+    4 calculadora: TKN_ID $@1 TKN_ASIGN . expresion TKN_PTOCOMA
+
+    TKN_NUM        desplazar e ir al estado 8
+    TKN_PAA        desplazar e ir al estado 9
+    TKN_SEN        desplazar e ir al estado 10
+    TKN_COS        desplazar e ir al estado 11
+    TKN_TAN        desplazar e ir al estado 12
+    TKN_SQRT       desplazar e ir al estado 13
+    TKN_LN         desplazar e ir al estado 14
+    TKN_UNOSOBREX  desplazar e ir al estado 15
+
+    expresion  ir al estado 16
+
+
+Estado 8
+
+    5 expresion: TKN_NUM .
+
+    $default  reduce usando la regla 5 (expresion)
+
+
+Estado 9
+
+    6 expresion: TKN_PAA . expresion TKN_PAC
+
+    TKN_NUM        desplazar e ir al estado 8
+    TKN_PAA        desplazar e ir al estado 9
+    TKN_SEN        desplazar e ir al estado 10
+    TKN_COS        desplazar e ir al estado 11
+    TKN_TAN        desplazar e ir al estado 12
+    TKN_SQRT       desplazar e ir al estado 13
+    TKN_LN         desplazar e ir al estado 14
+    TKN_UNOSOBREX  desplazar e ir al estado 15
+
+    expresion  ir al estado 17
+
+
+Estado 10
+
+   12 expresion: TKN_SEN . TKN_PAA expresion TKN_PAC
+
+    TKN_PAA  desplazar e ir al estado 18
+
+
+Estado 11
+
+   13 expresion: TKN_COS . TKN_PAA expresion TKN_PAC
+
+    TKN_PAA  desplazar e ir al estado 19
+
+
+Estado 12
+
+   14 expresion: TKN_TAN . TKN_PAA expresion TKN_PAC
+
+    TKN_PAA  desplazar e ir al estado 20
+
+
+Estado 13
+
+   16 expresion: TKN_SQRT . TKN_PAA expresion TKN_PAC
+
+    TKN_PAA  desplazar e ir al estado 21
+
+
+Estado 14
+
+   15 expresion: TKN_LN . TKN_PAA expresion TKN_PAC
+
+    TKN_PAA  desplazar e ir al estado 22
+
+
+Estado 15
+
+   17 expresion: TKN_UNOSOBREX . TKN_PAA expresion TKN_PAC
+
+    TKN_PAA  desplazar e ir al estado 23
+
+
+Estado 16
+
+    4 calculadora: TKN_ID $@1 TKN_ASIGN expresion . TKN_PTOCOMA
+    7 expresion: expresion . TKN_MAS expresion
+    8          | expresion . TKN_MENOS expresion
+    9          | expresion . TKN_MULT expresion
+   10          | expresion . TKN_POW expresion
+   11          | expresion . TKN_DIV expresion
+
+    TKN_PTOCOMA  desplazar e ir al estado 24
+    TKN_MULT     desplazar e ir al estado 25
+    TKN_DIV      desplazar e ir al estado 26
+    TKN_MAS      desplazar e ir al estado 27
+    TKN_MENOS    desplazar e ir al estado 28
+    TKN_POW      desplazar e ir al estado 29
+
+
+Estado 17
+
+    6 expresion: TKN_PAA expresion . TKN_PAC
+    7          | expresion . TKN_MAS expresion
+    8          | expresion . TKN_MENOS expresion
+    9          | expresion . TKN_MULT expresion
+   10          | expresion . TKN_POW expresion
+   11          | expresion . TKN_DIV expresion
+
+    TKN_MULT   desplazar e ir al estado 25
+    TKN_DIV    desplazar e ir al estado 26
+    TKN_MAS    desplazar e ir al estado 27
+    TKN_MENOS  desplazar e ir al estado 28
+    TKN_PAC    desplazar e ir al estado 30
+    TKN_POW    desplazar e ir al estado 29
+
+
+Estado 18
+
+   12 expresion: TKN_SEN TKN_PAA . expresion TKN_PAC
+
+    TKN_NUM        desplazar e ir al estado 8
+    TKN_PAA        desplazar e ir al estado 9
+    TKN_SEN        desplazar e ir al estado 10
+    TKN_COS        desplazar e ir al estado 11
+    TKN_TAN        desplazar e ir al estado 12
+    TKN_SQRT       desplazar e ir al estado 13
+    TKN_LN         desplazar e ir al estado 14
+    TKN_UNOSOBREX  desplazar e ir al estado 15
+
+    expresion  ir al estado 31
+
+
+Estado 19
+
+   13 expresion: TKN_COS TKN_PAA . expresion TKN_PAC
+
+    TKN_NUM        desplazar e ir al estado 8
+    TKN_PAA        desplazar e ir al estado 9
+    TKN_SEN        desplazar e ir al estado 10
+    TKN_COS        desplazar e ir al estado 11
+    TKN_TAN        desplazar e ir al estado 12
+    TKN_SQRT       desplazar e ir al estado 13
+    TKN_LN         desplazar e ir al estado 14
+    TKN_UNOSOBREX  desplazar e ir al estado 15
+
+    expresion  ir al estado 32
+
+
+Estado 20
+
+   14 expresion: TKN_TAN TKN_PAA . expresion TKN_PAC
+
+    TKN_NUM        desplazar e ir al estado 8
+    TKN_PAA        desplazar e ir al estado 9
+    TKN_SEN        desplazar e ir al estado 10
+    TKN_COS        desplazar e ir al estado 11
+    TKN_TAN        desplazar e ir al estado 12
+    TKN_SQRT       desplazar e ir al estado 13
+    TKN_LN         desplazar e ir al estado 14
+    TKN_UNOSOBREX  desplazar e ir al estado 15
+
+    expresion  ir al estado 33
+
+
+Estado 21
+
+   16 expresion: TKN_SQRT TKN_PAA . expresion TKN_PAC
+
+    TKN_NUM        desplazar e ir al estado 8
+    TKN_PAA        desplazar e ir al estado 9
+    TKN_SEN        desplazar e ir al estado 10
+    TKN_COS        desplazar e ir al estado 11
+    TKN_TAN        desplazar e ir al estado 12
+    TKN_SQRT       desplazar e ir al estado 13
+    TKN_LN         desplazar e ir al estado 14
+    TKN_UNOSOBREX  desplazar e ir al estado 15
+
+    expresion  ir al estado 34
+
+
+Estado 22
+
+   15 expresion: TKN_LN TKN_PAA . expresion TKN_PAC
+
+    TKN_NUM        desplazar e ir al estado 8
+    TKN_PAA        desplazar e ir al estado 9
+    TKN_SEN        desplazar e ir al estado 10
+    TKN_COS        desplazar e ir al estado 11
+    TKN_TAN        desplazar e ir al estado 12
+    TKN_SQRT       desplazar e ir al estado 13
+    TKN_LN         desplazar e ir al estado 14
+    TKN_UNOSOBREX  desplazar e ir al estado 15
+
+    expresion  ir al estado 35
+
+
+Estado 23
+
+   17 expresion: TKN_UNOSOBREX TKN_PAA . expresion TKN_PAC
+
+    TKN_NUM        desplazar e ir al estado 8
+    TKN_PAA        desplazar e ir al estado 9
+    TKN_SEN        desplazar e ir al estado 10
+    TKN_COS        desplazar e ir al estado 11
+    TKN_TAN        desplazar e ir al estado 12
+    TKN_SQRT       desplazar e ir al estado 13
+    TKN_LN         desplazar e ir al estado 14
+    TKN_UNOSOBREX  desplazar e ir al estado 15
+
+    expresion  ir al estado 36
+
+
+Estado 24
+
+    4 calculadora: TKN_ID $@1 TKN_ASIGN expresion TKN_PTOCOMA .
+
+    $default  reduce usando la regla 4 (calculadora)
+
+
+Estado 25
+
+    9 expresion: expresion TKN_MULT . expresion
+
+    TKN_NUM        desplazar e ir al estado 8
+    TKN_PAA        desplazar e ir al estado 9
+    TKN_SEN        desplazar e ir al estado 10
+    TKN_COS        desplazar e ir al estado 11
+    TKN_TAN        desplazar e ir al estado 12
+    TKN_SQRT       desplazar e ir al estado 13
+    TKN_LN         desplazar e ir al estado 14
+    TKN_UNOSOBREX  desplazar e ir al estado 15
+
+    expresion  ir al estado 37
+
+
+Estado 26
+
+   11 expresion: expresion TKN_DIV . expresion
+
+    TKN_NUM        desplazar e ir al estado 8
+    TKN_PAA        desplazar e ir al estado 9
+    TKN_SEN        desplazar e ir al estado 10
+    TKN_COS        desplazar e ir al estado 11
+    TKN_TAN        desplazar e ir al estado 12
+    TKN_SQRT       desplazar e ir al estado 13
+    TKN_LN         desplazar e ir al estado 14
+    TKN_UNOSOBREX  desplazar e ir al estado 15
+
+    expresion  ir al estado 38
+
+
+Estado 27
+
+    7 expresion: expresion TKN_MAS . expresion
+
+    TKN_NUM        desplazar e ir al estado 8
+    TKN_PAA        desplazar e ir al estado 9
+    TKN_SEN        desplazar e ir al estado 10
+    TKN_COS        desplazar e ir al estado 11
+    TKN_TAN        desplazar e ir al estado 12
+    TKN_SQRT       desplazar e ir al estado 13
+    TKN_LN         desplazar e ir al estado 14
+    TKN_UNOSOBREX  desplazar e ir al estado 15
+
+    expresion  ir al estado 39
+
+
+Estado 28
+
+    8 expresion: expresion TKN_MENOS . expresion
+
+    TKN_NUM        desplazar e ir al estado 8
+    TKN_PAA        desplazar e ir al estado 9
+    TKN_SEN        desplazar e ir al estado 10
+    TKN_COS        desplazar e ir al estado 11
+    TKN_TAN        desplazar e ir al estado 12
+    TKN_SQRT       desplazar e ir al estado 13
+    TKN_LN         desplazar e ir al estado 14
+    TKN_UNOSOBREX  desplazar e ir al estado 15
+
+    expresion  ir al estado 40
+
+
+Estado 29
+
+   10 expresion: expresion TKN_POW . expresion
+
+    TKN_NUM        desplazar e ir al estado 8
+    TKN_PAA        desplazar e ir al estado 9
+    TKN_SEN        desplazar e ir al estado 10
+    TKN_COS        desplazar e ir al estado 11
+    TKN_TAN        desplazar e ir al estado 12
+    TKN_SQRT       desplazar e ir al estado 13
+    TKN_LN         desplazar e ir al estado 14
+    TKN_UNOSOBREX  desplazar e ir al estado 15
+
+    expresion  ir al estado 41
+
+
+Estado 30
+
+    6 expresion: TKN_PAA expresion TKN_PAC .
+
+    $default  reduce usando la regla 6 (expresion)
+
+
+Estado 31
+
+    7 expresion: expresion . TKN_MAS expresion
+    8          | expresion . TKN_MENOS expresion
+    9          | expresion . TKN_MULT expresion
+   10          | expresion . TKN_POW expresion
+   11          | expresion . TKN_DIV expresion
+   12          | TKN_SEN TKN_PAA expresion . TKN_PAC
+
+    TKN_MULT   desplazar e ir al estado 25
+    TKN_DIV    desplazar e ir al estado 26
+    TKN_MAS    desplazar e ir al estado 27
+    TKN_MENOS  desplazar e ir al estado 28
+    TKN_PAC    desplazar e ir al estado 42
+    TKN_POW    desplazar e ir al estado 29
+
+
+Estado 32
+
+    7 expresion: expresion . TKN_MAS expresion
+    8          | expresion . TKN_MENOS expresion
+    9          | expresion . TKN_MULT expresion
+   10          | expresion . TKN_POW expresion
+   11          | expresion . TKN_DIV expresion
+   13          | TKN_COS TKN_PAA expresion . TKN_PAC
+
+    TKN_MULT   desplazar e ir al estado 25
+    TKN_DIV    desplazar e ir al estado 26
+    TKN_MAS    desplazar e ir al estado 27
+    TKN_MENOS  desplazar e ir al estado 28
+    TKN_PAC    desplazar e ir al estado 43
+    TKN_POW    desplazar e ir al estado 29
+
+
+Estado 33
+
+    7 expresion: expresion . TKN_MAS expresion
+    8          | expresion . TKN_MENOS expresion
+    9          | expresion . TKN_MULT expresion
+   10          | expresion . TKN_POW expresion
+   11          | expresion . TKN_DIV expresion
+   14          | TKN_TAN TKN_PAA expresion . TKN_PAC
+
+    TKN_MULT   desplazar e ir al estado 25
+    TKN_DIV    desplazar e ir al estado 26
+    TKN_MAS    desplazar e ir al estado 27
+    TKN_MENOS  desplazar e ir al estado 28
+    TKN_PAC    desplazar e ir al estado 44
+    TKN_POW    desplazar e ir al estado 29
+
+
+Estado 34
+
+    7 expresion: expresion . TKN_MAS expresion
+    8          | expresion . TKN_MENOS expresion
+    9          | expresion . TKN_MULT expresion
+   10          | expresion . TKN_POW expresion
+   11          | expresion . TKN_DIV expresion
+   16          | TKN_SQRT TKN_PAA expresion . TKN_PAC
+
+    TKN_MULT   desplazar e ir al estado 25
+    TKN_DIV    desplazar e ir al estado 26
+    TKN_MAS    desplazar e ir al estado 27
+    TKN_MENOS  desplazar e ir al estado 28
+    TKN_PAC    desplazar e ir al estado 45
+    TKN_POW    desplazar e ir al estado 29
+
+
+Estado 35
+
+    7 expresion: expresion . TKN_MAS expresion
+    8          | expresion . TKN_MENOS expresion
+    9          | expresion . TKN_MULT expresion
+   10          | expresion . TKN_POW expresion
+   11          | expresion . TKN_DIV expresion
+   15          | TKN_LN TKN_PAA expresion . TKN_PAC
+
+    TKN_MULT   desplazar e ir al estado 25
+    TKN_DIV    desplazar e ir al estado 26
+    TKN_MAS    desplazar e ir al estado 27
+    TKN_MENOS  desplazar e ir al estado 28
+    TKN_PAC    desplazar e ir al estado 46
+    TKN_POW    desplazar e ir al estado 29
+
+
+Estado 36
+
+    7 expresion: expresion . TKN_MAS expresion
+    8          | expresion . TKN_MENOS expresion
+    9          | expresion . TKN_MULT expresion
+   10          | expresion . TKN_POW expresion
+   11          | expresion . TKN_DIV expresion
+   17          | TKN_UNOSOBREX TKN_PAA expresion . TKN_PAC
+
+    TKN_MULT   desplazar e ir al estado 25
+    TKN_DIV    desplazar e ir al estado 26
+    TKN_MAS    desplazar e ir al estado 27
+    TKN_MENOS  desplazar e ir al estado 28
+    TKN_PAC    desplazar e ir al estado 47
+    TKN_POW    desplazar e ir al estado 29
+
+
+Estado 37
+
+    7 expresion: expresion . TKN_MAS expresion
+    8          | expresion . TKN_MENOS expresion
+    9          | expresion . TKN_MULT expresion
+    9          | expresion TKN_MULT expresion .
+   10          | expresion . TKN_POW expresion
+   11          | expresion . TKN_DIV expresion
+
+    TKN_POW  desplazar e ir al estado 29
+
+    $default  reduce usando la regla 9 (expresion)
+
+
+Estado 38
+
+    7 expresion: expresion . TKN_MAS expresion
+    8          | expresion . TKN_MENOS expresion
+    9          | expresion . TKN_MULT expresion
+   10          | expresion . TKN_POW expresion
+   11          | expresion . TKN_DIV expresion
+   11          | expresion TKN_DIV expresion .
+
+    TKN_POW  desplazar e ir al estado 29
+
+    $default  reduce usando la regla 11 (expresion)
+
+
+Estado 39
+
+    7 expresion: expresion . TKN_MAS expresion
+    7          | expresion TKN_MAS expresion .
+    8          | expresion . TKN_MENOS expresion
+    9          | expresion . TKN_MULT expresion
+   10          | expresion . TKN_POW expresion
+   11          | expresion . TKN_DIV expresion
+
+    TKN_MULT  desplazar e ir al estado 25
+    TKN_DIV   desplazar e ir al estado 26
+    TKN_POW   desplazar e ir al estado 29
+
+    $default  reduce usando la regla 7 (expresion)
+
+
+Estado 40
+
+    7 expresion: expresion . TKN_MAS expresion
+    8          | expresion . TKN_MENOS expresion
+    8          | expresion TKN_MENOS expresion .
+    9          | expresion . TKN_MULT expresion
+   10          | expresion . TKN_POW expresion
+   11          | expresion . TKN_DIV expresion
+
+    TKN_MULT  desplazar e ir al estado 25
+    TKN_DIV   desplazar e ir al estado 26
+    TKN_POW   desplazar e ir al estado 29
+
+    $default  reduce usando la regla 8 (expresion)
+
+
+Estado 41
+
+    7 expresion: expresion . TKN_MAS expresion
+    8          | expresion . TKN_MENOS expresion
+    9          | expresion . TKN_MULT expresion
+   10          | expresion . TKN_POW expresion
+   10          | expresion TKN_POW expresion .
+   11          | expresion . TKN_DIV expresion
+
+    $default  reduce usando la regla 10 (expresion)
+
+
+Estado 42
+
+   12 expresion: TKN_SEN TKN_PAA expresion TKN_PAC .
+
+    $default  reduce usando la regla 12 (expresion)
+
+
+Estado 43
+
+   13 expresion: TKN_COS TKN_PAA expresion TKN_PAC .
+
+    $default  reduce usando la regla 13 (expresion)
+
+
+Estado 44
+
+   14 expresion: TKN_TAN TKN_PAA expresion TKN_PAC .
+
+    $default  reduce usando la regla 14 (expresion)
+
+
+Estado 45
+
+   16 expresion: TKN_SQRT TKN_PAA expresion TKN_PAC .
+
+    $default  reduce usando la regla 16 (expresion)
+
+
+Estado 46
+
+   15 expresion: TKN_LN TKN_PAA expresion TKN_PAC .
+
+    $default  reduce usando la regla 15 (expresion)
+
+
+Estado 47
+
+   17 expresion: TKN_UNOSOBREX TKN_PAA expresion TKN_PAC .
+
+    $default  reduce usando la regla 17 (expresion)
